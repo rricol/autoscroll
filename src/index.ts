@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Default scroll speed in milliseconds
-  const defaultSpeed = 100000;
+  let defaultSpeed = 100000;
 
   // Elements
   const playButton = document.querySelector('[ns-autoscroll-element="play"]');
@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const speedButtons = document.querySelectorAll('[ns-autoscroll-speedbtn]');
   const customSpeedInput = document.querySelector('[ns-autoscroll-speed]');
 
-  let currentSpeed = defaultSpeed;
   if (customSpeedInput) {
     const customSpeed = customSpeedInput.getAttribute('ns-autoscroll-speed');
-    if (customSpeed) currentSpeed = parseInt(customSpeed);
+    if (customSpeed) defaultSpeed = parseInt(customSpeed);
   }
+  let currentSpeed = defaultSpeed;
   // Variables
   let autoScrollInterval: number | null;
 
