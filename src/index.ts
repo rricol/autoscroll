@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const pauseButton = document.querySelector('[ns-autoscroll-element="pause"]');
   const speedButtons = document.querySelectorAll('[ns-autoscroll-speedbtn]');
   const customSpeedInput = document.querySelector('[ns-autoscroll-speed]');
+  const activeClassElement = document.querySelector('[ns-autoscroll-active]');
+
+  // Active class
+  const activeClass = activeClassElement
+    ? activeClassElement.getAttribute('ns-autoscroll-active')
+    : 'ns-active';
 
   if (customSpeedInput) {
     const customSpeed = customSpeedInput.getAttribute('ns-autoscroll-speed');
@@ -45,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
   speedButtons.forEach((button) => {
     const speedAttribute = button.getAttribute('ns-autoscroll-speedbtn');
     const speedMultiplier = speedAttribute ? parseFloat(speedAttribute) : 1;
+    if (speedMultiplier === 1) {
+      button.classList.add(activeClass as string);
+    }
     button.addEventListener('click', () => {
       currentSpeed = defaultSpeed / speedMultiplier;
       if (autoScrollInterval) {
