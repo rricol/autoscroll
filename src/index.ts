@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   speedButtons.forEach((button) => {
-    const speedAttribute = button.getAttribute('ns-autoscroll-speed');
+    const speedAttribute = button.getAttribute('ns-autoscroll-speedbtn');
     const speedMultiplier = speedAttribute ? parseFloat(speedAttribute) : 1;
     button.addEventListener('click', () => {
       currentSpeed = defaultSpeed / speedMultiplier;
