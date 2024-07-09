@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
       button.classList.add(activeClass as string);
     }
     button.addEventListener('click', () => {
+      speedButtons.forEach((btn) => btn.classList.remove(activeClass as string));
+      button.classList.add(activeClass as string);
       currentSpeed = defaultSpeed / speedMultiplier;
       if (autoScrollInterval) {
         startAutoScroll(currentSpeed);
