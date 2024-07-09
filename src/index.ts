@@ -5,10 +5,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Elements
   const playButton = document.querySelector('[ns-autoscroll-element="play"]');
   const pauseButton = document.querySelector('[ns-autoscroll-element="pause"]');
-  const speedButtons = document.querySelectorAll('[ns-autoscroll-speed]');
+  const speedButtons = document.querySelectorAll('[ns-autoscroll-speedbtn]');
+  const customSpeedInput = document.querySelector('[ns-autoscroll-speed]');
 
-  // Variables
   let currentSpeed = defaultSpeed;
+  if (customSpeedInput) {
+    const customSpeed = customSpeedInput.getAttribute('ns-autoscroll-speed');
+    if (customSpeed) currentSpeed = parseInt(customSpeed);
+  }
+  // Variables
   let autoScrollInterval: number | null;
 
   // Function to start auto-scrolling
