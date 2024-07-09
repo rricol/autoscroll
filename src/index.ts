@@ -8,6 +8,22 @@ document.addEventListener('DOMContentLoaded', function () {
   const speedButtons = document.querySelectorAll('[ns-autoscroll-speedbtn]');
   const customSpeedInput = document.querySelector('[ns-autoscroll-speed]');
   const activeClassElement = document.querySelector('[ns-autoscroll-active]');
+  const keydownElement = document.querySelector('[ns-autoscroll-keydown]');
+
+  if (keydownElement) {
+    const keydown = keydownElement.getAttribute('ns-autoscroll-keydown');
+    if (keydown) {
+      document.addEventListener('keydown', (event) => {
+        if (event.code === keydown) {
+          if (autoScrollInterval) {
+            stopAutoScroll();
+          } else {
+            startAutoScroll(currentSpeed);
+          }
+        }
+      });
+    }
+  }
 
   // Active class
   const activeClass = activeClassElement
